@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Produtos Artesanais</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Loja de Produtos Artesanais</h1>
+    </header>
+    <main>
+        <div id="product-list">
+            {{range .Products}}
+                <div class="product">
+                    <h2>{{.Name}}</h2>
+                    <p>{{.Description}}</p>
+                    <p>Quantidade: {{.Quantity}}</p>
+                    <p>Características: {{.Characteristics}}</p>
+                    <p>Matérias: {{.Materials}}</p>
+                </div>
+            {{end}}
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - Loja de Produtos Artesanais</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Administração - Loja de Produtos Artesanais</h1>
+    </header>
+    <main>
+        <form action="/addProduct" method="POST">
+            <input type="text" name="name" placeholder="Nome do Produto" required>
+            <input type="text" name="description" placeholder="Descrição do Produto" required>
+            <input type="number" name="quantity" placeholder="Quantidade" required>
+            <input type="text" name="characteristics" placeholder="Características" required>
+            <input type="text" name="materials" placeholder="Matérias" required>
+            <button type="submit">Adicionar Produto</button>
+        </form>
+        <div id="admin-product-list">
+            {{range .Products}}
+                <div class="product">
+                    <h2>{{.Name}}</h2>
+                    <p>{{.Description}}</p>
+                    <p>Quantidade: {{.Quantity}}</p>
+                    <p>Características: {{.Characteristics}}</p>
+                    <p>Matérias: {{.Materials}}</p>
+                    <form action="/deleteProduct" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="{{.ID}}">
+                        <button type="submit">Excluir Produto</button>
+                    </form>
+                </div>
+            {{end}}
+        </div>
+    </main>
+</body>
+</html>
