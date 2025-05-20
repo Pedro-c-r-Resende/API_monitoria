@@ -1,6 +1,8 @@
 package models
 
-import "aplicacao-web/database"
+import (
+	"loja-artesanato/database"
+)
 
 type Product struct {
 	Id          int
@@ -12,9 +14,9 @@ type Product struct {
 
 func SearchProducts() []Product {
 
-	db := database.ConectWithDatabase()
+	db := database.ConnectDb()
 
-	selectAllProducts, err := db.Querry("SELECT * FROM products order by id ASC")
+	selectAllProducts, err := db.Query("SELECT * FROM products order by id ASC")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -43,8 +45,8 @@ func SearchProducts() []Product {
 	return products
 }
 
-func CreateProduct(name, description string, price float64, quantity int) {
-	db := database.ConectWithDatabase()
+func CreateProduct(name, description string, price float64, quantity int64) {
+	db := database.ConnectDb()
 
 	insertDataOnDB, err := db.Prepare("insert into products(name, description, price, quantity) values($1, $2, $3, $4)")
 	if err != nil {
@@ -56,7 +58,7 @@ func CreateProduct(name, description string, price float64, quantity int) {
 }
 
 func DeleteProduct(id string) {
-	db := database.ConectWithDatabase()
+	db := database.ConnectDb()
 
 	delete, err := db.Prepare("delete from products where id=$1")
 	if err != nil {
@@ -67,9 +69,9 @@ func DeleteProduct(id string) {
 }
 
 func EditProduct(id string) Product {
-	db := database.ConectWithDatabase()
+	db := database.ConnectDb()
 
-	productDb, err := db.Querry("select * from products where id=$1", id)
+	productDb, err := db.Query("select * from products where id=$1", id)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -95,8 +97,8 @@ func EditProduct(id string) Product {
 	return productUpdate
 }
 
-func updateProduct(id string, name string, description string, price float64, quantity int) {
-	db := database.ConectWithDatabase()
+func UpdateProduct(id int, name string, description string, price float64, quantity int) {
+	db := database.ConnectDb()
 
 	updateProduct, err := db.Prepare("update produtos set name=$1, description=$2, price=$3, quantity=$4")
 	if err != nil {

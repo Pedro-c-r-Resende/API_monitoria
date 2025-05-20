@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"loja-artesanato/controllers"
 	"net/http"
 )
 

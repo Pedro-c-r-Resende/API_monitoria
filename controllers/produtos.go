@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"aplicacao-web/models"
 	"html/template"
 	"log"
+	"loja-artesanato/models"
 	"net/http"
 	"strconv"
 )
@@ -11,15 +11,15 @@ import (
 var temp = template.Must(template.ParseGlob("templates/*.html"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	products := models.BuscarProdutos()
-	temp.ExecuteTemplate(w, "Index", produtos)
+	products := models.SearchProducts()
+	temp.ExecuteTemplate(w, "Index", products)
 }
 
 func CreateProduct(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "CreateProduct", nil)
 }
 
-func insert(w http.ResponseWriter, r *http.Request) {
+func Insert(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		name := r.FormValue("name")
 		description := r.FormValue("description")
@@ -27,6 +27,10 @@ func insert(w http.ResponseWriter, r *http.Request) {
 		quantity := r.FormValue("quantity")
 
 		priceConv, err := strconv.ParseFloat(price, 64)
+		if err != nil {
+			log.Println("Error on price conversion", err)
+		}
+		quantityConv, err := strconv.ParseInt(quantity, 10, 32)
 		if err != nil {
 			log.Println("Error on quantity conversion", err)
 		}
@@ -67,4 +71,10 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		models.UpdateProduct(idConv, name, description, priceConv, quantityConv)
 
 	}
+}
+
+func Edit(w http.ResponseWriter, r *http.Request) {
+	productId := r.URL.Query().Get("idproduto")
+	product := models.EditProduct(productId)
+	temp.ExecuteTemplate(w, "Edit", product)
 }

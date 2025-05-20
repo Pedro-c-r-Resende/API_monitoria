@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff8f0;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    background-color: #a0522d;
+    color: white;
+}
+
+header h1 {
+    font-size: 1.8em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.banner {
+    background: url('https://via.placeholder.com/1200x300?text=Artesanato') no-repeat center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    padding: 60px 20px;
+}
+
+.banner h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.produtos {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.produtos h2 {
+    margin-bottom: 30px;
+    color: #a0522d;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.produto {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.produto img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.produto h3 {
+    margin: 10px 0 5px;
+    font-size: 1.1em;
+    color: #a0522d;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
