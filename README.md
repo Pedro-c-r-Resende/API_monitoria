@@ -3,7 +3,7 @@
 ## The model is for an arts and crafts shop, but feel free to adapt my code to another pupose or your own shop with your own products. Crediting would be really nice tho :D
 
 ## these are the technologies i used on this simple project
-| component | technology used | 
+| Component | Technology used | 
 | :----------- | :------------: | 
 | Front-end|  simple html/css | 
 | Back-end|  GOlang  |  
